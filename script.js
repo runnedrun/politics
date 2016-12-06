@@ -18,9 +18,13 @@ $.ajax({
     // So we can use Object.keys(nameCounts) to get all the "keys"
     // in nameCounts, which, for the above example would be ["David", "John", "Mary"]
     
-    // the second argument to makeCloud is a function which makeCloud uses to figure out how big it should make each word. In
+    // the second argument to makeCloud is a function which makeCloud uses
+    // to figure out how big it should make each word. In our case
+    // we want each word to be bigger if it nameCount has a bigger
+    // count for it. Se
     
-    makeCloud(Object.keys(nameCounts), function() {
+    makeCloud(Object.keys(nameCounts), function(name) {
+      return nameCounts[name] * 100
     })
   }
 })
