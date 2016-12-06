@@ -13,7 +13,9 @@ $.ajax({
       names[firstName] = numberOfPeopleWithName
     })
     
-    // now names is an object like {david: 5, John: 2, Mary, 1}
+    // Now names is an object like {David: 5, John: 2, Mary: 1, and so on}.
+    // Make cloud takes an array of words as an argument, and we only have an object.
+    // So we can use Object.keys(names) to get teh 
     
     makeCloud(
   }
