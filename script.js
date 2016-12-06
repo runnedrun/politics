@@ -21,23 +21,17 @@ $.ajax({
     // the second argument to makeCloud is a function which makeCloud uses
     // to figure out how big it should make each word. In our case
     // we want each word to be bigger if it nameCount has a bigger
-    // count for it. See what happens if you change "100" to something 
+    // count for it. See what happens if you change "10" to something 
     // smaller or larger.
     
     makeCloud(Object.keys(nameCounts), function(name) {      
-      var count = nameCounts[name] * 100
+      var count = nameCounts[name] * 10
       return count
     })
   }
 })
 
 var fill = d3.scaleOrdinal(d3.schemeCategory20);
-
-//makeCloud(["there", "friedn"], function() {
-//  return Math.random() * 100
-//})
-//
-
 
 function makeCloud(wordArray, wordSizeFunction) {  
   var layout = d3.layout.cloud()
