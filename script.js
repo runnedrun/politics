@@ -12,6 +12,10 @@ $.ajax({
       numberOfPeopleWithName += 1
       names[firstName] = numberOfPeopleWithName
     })
+    
+    // now names is an object like {david: 5, John: 2, Mary, 1}
+    
+    makeCloud(
   }
 })
 
