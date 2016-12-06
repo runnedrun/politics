@@ -4,7 +4,7 @@
 // try changing /person to 
 $.ajax({
   method: "GET",
-  url: "https://www.govtrack.us/api/v2/person?name='hilary clinton'",
+  url: "https://www.govtrack.us/api/v2/person?q=clinton",
   success: function(data) {    
     var nameCounts = {}    
     console.log("what", data)
