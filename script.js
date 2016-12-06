@@ -9,6 +9,8 @@ $.ajax({
 
 var fill = d3.scale.category20();
 
+makeCloud(["hi,
+
 function makeCloud(words) {
   var layout = cloud()
   .size([500, 500])
