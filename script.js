@@ -1,33 +1,34 @@
-$.ajax({
-  method: "GET",
-  url: "https://www.govtrack.us/api/v2/person",
-  success: function(data) {    
-    var nameCounts = {}    
-    data.objects.forEach(function(object) {
-      var firstName = object.firstname
-      // if we haven't yet seen this name, then 
-      // names[object.firstname] will be null. || 0 means to
-      // default to 0 if names[object.firstname] is null.
-      var numberOfPeopleWithName = nameCounts[firstName] || 0   
-      numberOfPeopleWithName += 1
-      nameCounts[firstName] = numberOfPeopleWithName
-    })
-    
-    // Now nameCounts is an object like {David: 5, John: 2, Mary: 1, and so on}.
-    // makeCloud takes an array of words as an argument, and we only have an object.
-    // So we can use Object.keys(nameCounts) to get all the "keys"
-    // in nameCounts, which, for the above example would be ["David", "John", "Mary"]
-    
-    // the second argument to makeCloud is a function which makeCloud uses
-    // to figure out how big it should make each word. In our case
-    // we want each word to be bigger if it nameCount has a bigger
-    // count for it. Se
-    
-    makeCloud(Object.keys(nameCounts), function(name) {
-      return nameCounts[name] * 100
-    })
-  }
-})
+//$.ajax({
+//  method: "GET",
+//  url: "https://www.govtrack.us/api/v2/person",
+//  success: function(data) {    
+//    var nameCounts = {}    
+//    data.objects.forEach(function(object) {
+//      var firstName = object.firstname
+//      // if we haven't yet seen this name, then 
+//      // names[object.firstname] will be null. || 0 means to
+//      // default to 0 if names[object.firstname] is null.
+//      var numberOfPeopleWithName = nameCounts[firstName] || 0   
+//      numberOfPeopleWithName += 1
+//      nameCounts[firstName] = numberOfPeopleWithName
+//    })
+//    
+//    // Now nameCounts is an object like {David: 5, John: 2, Mary: 1, and so on}.
+//    // makeCloud takes an array of words as an argument, and we only have an object.
+//    // So we can use Object.keys(nameCounts) to get all the "keys"
+//    // in nameCounts, which, for the above example would be ["David", "John", "Mary"]
+//    
+//    // the second argument to makeCloud is a function which makeCloud uses
+//    // to figure out how big it should make each word. In our case
+//    // we want each word to be bigger if it nameCount has a bigger
+//    // count for it. See what happens if you change "100" to something 
+//    // smaller or larger.
+//    
+//    makeCloud(Object.keys(nameCounts), function(name) {
+//      return nameCounts[name] * 100
+//    })
+//  }
+//})
 
 var fill = d3.scaleOrdinal(d3.schemeCategory20);
 
