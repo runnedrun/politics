@@ -2,22 +2,23 @@ $.ajax({
   method: "GET",
   url: "https://www.govtrack.us/api/v2/person",
   success: function(data) {    
-    var names = {}    
+    var nameCounts = {}    
     data.objects.forEach(function(object) {
       var firstName = object.firstname
       // if we haven't yet seen this name, then 
       // names[object.firstname] will be null. || 0 means to
       // default to 0 if names[object.firstname] is null.
-      var numberOfPeopleWithName = names[firstName] || 0   
+      var numberOfPeopleWithName = nameCounts[firstName] || 0   
       numberOfPeopleWithName += 1
-      names[firstName] = numberOfPeopleWithName
+      nameCounts[firstName] = numberOfPeopleWithName
     })
     
-    // Now names is an object like {David: 5, John: 2, Mary: 1, and so on}.
-    // Make cloud takes an array of words as an argument, and we only have an object.
-    // So we can use Object.keys(names) to get teh 
+    // Now nameCounts is an object like {David: 5, John: 2, Mary: 1, and so on}.
+    // makeCloud takes an array of words as an argument, and we only have an object.
+    // So we can use Object.keys(nameCounts) to get all the "keys"
+    // in nameCounts, which, for the above example would be ["David", "John", "Mary"]
     
-    makeCloud(
+    makeCloud(Objec
   }
 })
 
