@@ -2,8 +2,10 @@ $.ajax({
   method: "GET",
   url: "https://www.govtrack.us/api/v2/person",
   success: function(data) {    
-    var arr = []    
+    var names = {}    
     data.objects.forEach(function(object) {
+      var numberOfNames = names[object.firstname]
+      
       arr.push(object.firstname)
     })
   }
