@@ -37,6 +37,7 @@ makeCloud(["there", "friedn"], function() {
 })
 //
 function makeCloud(wordArray, wordSizeFunction) {
+  console.log("word array", wordArray)
   var layout = d3.layout.cloud()
   .size([500, 500])
   .words(wordArray.map(function(d) {
