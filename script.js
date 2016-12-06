@@ -35,6 +35,7 @@ var fill = d3.scaleOrdinal(d3.schemeCategory20);
 
 function makeCloud(wordArray, wordSizeFunction) {  
   var layout = d3.layout.cloud()
+  // try changing this!
   .size([500, 500])
   .words(wordArray.map(function(d) {
     return {text: d, size: wordSizeFunction(d)};
