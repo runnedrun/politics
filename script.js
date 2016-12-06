@@ -1,23 +1,25 @@
-//$.ajax({
-//  method: "GET",
-//  url: "https://www.govtrack.us/api/v2/person",
-//  success: function(data) {    
-//    var arr = []    
-//    data.objects.forEach(function(object) {
-//      arr.push(object.firstname)
-//    })
-//  }
-//})
+$.ajax({
+  method: "GET",
+  url: "https://www.govtrack.us/api/v2/person",
+  success: function(data) {    
+    var arr = []    
+    data.objects.forEach(function(object) {
+      arr.push(object.firstname)
+    })
+  }
+})
 
-var fill = d3.scale.category20();
+var fill = d3.scaleOrdinal(d3.schemeCategory20);
 
-makeCloud(["hi", "there", "friedn"])
+makeCloud(["there", "friedn"], function() {
+  return Math.random() * 100
+})
 //
-function makeCloud(words) {
+function makeCloud(words, wordSizeFunction) {
   var layout = d3.layout.cloud()
   .size([500, 500])
   .words(words.map(function(d) {
-    return {text: d, size: 10 + Math.random() * 90, test: "haha"};
+    return {text: d, size: wordSizeFunction(d)};
   }))
   .padding(5)
   .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -26,23 +28,23 @@ function makeCloud(words) {
   .on("end", draw);
 
   layout.start(); 
-}
 
-function draw(words) {
-  d3.select("body").append("svg")
-    .attr("width", layout.size()[0])
-    .attr("height", layout.size()[1])
-    .append("g")
-    .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
-    .selectAll("text")
-    .data(words)
-    .enter().append("text")
-    .style("font-size", function(d) { return d.size + "px"; })
-    .style("font-family", "Impact")
-    .style("fill", function(d, i) { return fill(i); })
-    .attr("text-anchor", "middle")
-    .attr("transform", function(d) {
-    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-  })
-    .text(function(d) { return d.text; });
+  function draw(words) {
+    d3.select("body").append("svg")
+      .attr("width", layout.size()[0])
+      .attr("height", layout.size()[1])
+      .append("g")
+      .attr("transform", "translate(" + layout.size()[0] / 2 + "," + layout.size()[1] / 2 + ")")
+      .selectAll("text")
+      .data(words)
+      .enter().append("text")
+      .style("font-size", function(d) { return d.size + "px"; })
+      .style("font-family", "Impact")
+      .style("fill", function(d, i) { return fill(i); })
+      .attr("text-anchor", "middle")
+      .attr("transform", function(d) {
+      return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+    })
+      .text(function(d) { return d.text; });
+  }
 }
