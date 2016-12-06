@@ -4,12 +4,13 @@ $.ajax({
   success: function(data) {    
     var names = {}    
     data.objects.forEach(function(object) {
+      var firstName = object.firstname
       // if we haven't yet seen this name, then 
-      // names[object.firstname] will be null. || means to
-      // default t
-      var numberOfPeopleWithName = names[object.firstname] || 0
-      
-      arr.push(object.firstname)
+      // names[object.firstname] will be null. || 0 means to
+      // default to 0 if names[object.firstname] is null.
+      var numberOfPeopleWithName = names[firstName] || 0   
+      numberOfPeopleWithName += 1
+      names[firstName] = numberOfPeopleWithName
     })
   }
 })
