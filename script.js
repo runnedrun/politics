@@ -7,6 +7,8 @@ $.ajax({
   }
 })
 
+
+console.log(d3)
 var fill = d3.scale.category20();
 
 function makeCloud(words) {
