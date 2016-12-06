@@ -25,17 +25,20 @@ $.ajax({
     // smaller or larger.
     
     makeCloud(Object.keys(nameCounts), function(name) {      
-      return nameCounts[name] * 100
+      var count = nameCounts[name] * 100
+      return count
     })
   }
 })
 
 var fill = d3.scaleOrdinal(d3.schemeCategory20);
 
-makeCloud(["there", "friedn"], function() {
-  return Math.random() * 100
-})
+//makeCloud(["there", "friedn"], function() {
+//  return Math.random() * 100
+//})
 //
+
+
 function makeCloud(wordArray, wordSizeFunction) {  
   var layout = d3.layout.cloud()
   .size([500, 500])
