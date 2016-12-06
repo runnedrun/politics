@@ -12,7 +12,7 @@ var fill = d3.scale.category20();
 makeCloud(["hi", "there", "friedn"])
 
 function makeCloud(words) {
-  var layout = cloud()
+  var layout = d3.layout.cloud()
   .size([500, 500])
   .words(words.map(function(d) {
     return {text: d, size: 10 + Math.random() * 90, test: "haha"};
