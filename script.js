@@ -32,7 +32,7 @@
 
 var fill = d3.scaleOrdinal(d3.schemeCategory20);
 
-makeCloud(["there", "friedn"], function() {
+makeCloud(["there", "friedn", "Asdf"], function() {
   return Math.random() * 100
 })
 //
