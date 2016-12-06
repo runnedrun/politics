@@ -1,10 +1,10 @@
 // this is a public api available at 
 // https://www.govtrack.us/developers/api
 // check out some of the other methods! 
-// try changing /e
+// try changing /person to 
 $.ajax({
   method: "GET",
-  url: "https://www.govtrack.us/api/v2/person",
+  url: "https://www.govtrack.us/api/v2/person?q='hilary clinton'",
   success: function(data) {    
     var nameCounts = {}    
     data.objects.forEach(function(object) {
