@@ -4,7 +4,10 @@ $.ajax({
   success: function(data) {    
     var names = {}    
     data.objects.forEach(function(object) {
-      var numberOfNames = names[object.firstname]
+      // if we haven't yet seen this name, then 
+      // names[object.firstname] will be null. || means to
+      // default t
+      var numberOfPeopleWithName = names[object.firstname] || 0
       
       arr.push(object.firstname)
     })
