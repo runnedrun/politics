@@ -3,13 +3,14 @@ $.ajax({
   url: "https://www.govtrack.us/api/v2/person",
   success: function(data) {
     data.objects =  
-    [{name: "ronald"}, {name: "george"}, {name: "ronald"}
+    [{firstname: "ronald"}, {firstname: "george"}, {name: "ronald"}
     ]
     
-    var arr = []
+    var arr = []    
+    
     data.objects.forEach(function(object) {
-      arr.push(object.name)
-      console.log(object.name)
+      arr.push(object.firstname)
+      console.log(object.firstname)
     })
   }
 })
