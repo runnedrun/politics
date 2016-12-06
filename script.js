@@ -9,23 +9,20 @@ $.ajax({
 
 var fill = d3.scale.category20();
 
-function makeCloud() {
-  
-}
-var layout = cloud()
-.size([500, 500])
-.words([
-  "Hello", "world", "normally", "you", "want", "more", "words",
-  "than", "this"].map(function(d) {
-  return {text: d, size: 10 + Math.random() * 90, test: "haha"};
-}))
-.padding(5)
-.rotate(function() { return ~~(Math.random() * 2) * 90; })
-.font("Impact")
-.fontSize(function(d) { return d.size; })
-.on("end", draw);
+function makeCloud(words) {
+  var layout = cloud()
+  .size([500, 500])
+  .words(words.map(function(d) {
+    return {text: d, size: 10 + Math.random() * 90, test: "haha"};
+  }))
+  .padding(5)
+  .rotate(function() { return ~~(Math.random() * 2) * 90; })
+  .font("Impact")
+  .fontSize(function(d) { return d.size; })
+  .on("end", draw);
 
-layout.start();
+  layout.start(); 
+}
 
 function draw(words) {
   d3.select("body").append("svg")
