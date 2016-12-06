@@ -24,7 +24,7 @@ $.ajax({
     // count for it. See what happens if you change "100" to something 
     // smaller or larger.
     
-    makeCloud(Object.keys(nameCounts), function(name) {
+    makeCloud(Object.keys(nameCounts), function(name) {      
       return nameCounts[name] * 100
     })
   }
@@ -36,8 +36,7 @@ makeCloud(["there", "friedn"], function() {
   return Math.random() * 100
 })
 //
-function makeCloud(wordArray, wordSizeFunction) {
-  console.log("word array", wordArray)
+function makeCloud(wordArray, wordSizeFunction) {  
   var layout = d3.layout.cloud()
   .size([500, 500])
   .words(wordArray.map(function(d) {
