@@ -4,10 +4,11 @@
 // try changing /person to 
 $.ajax({
   method: "GET",
-  url: "https://www.govtrack.us/api/v2/person?q='hilary clinton'",
+  url: "https://www.govtrack.us/api/v2/person?name='hilary clinton'",
   success: function(data) {    
     var nameCounts = {}    
-    data.objects.forEach(function(object) {
+    console.log("what", data)
+    data.objects.forEach(function(object) {      
       var firstName = object.firstname
       // if we haven't yet seen this name, then 
       // names[object.firstname] will be null. || 0 means to
