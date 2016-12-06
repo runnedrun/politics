@@ -1,14 +1,13 @@
 // this is a public api available at 
 // https://www.govtrack.us/developers/api
 // check out some of the other methods! 
-// try changing /person to 
+// try changing the url "https://www.govtrack.us/api/v2/person?q=hilary"
 $.ajax({
   method: "GET",
-  url: "https://www.govtrack.us/api/v2/person?q=clinton",
+  url: "https://www.govtrack.us/api/v2/person",
   success: function(data) {    
     var nameCounts = {}    
-    console.log("what", data)
-    data.objects.forEach(function(object) {      
+    data.objects.forEach(function(object) {
       var firstName = object.firstname
       // if we haven't yet seen this name, then 
       // names[object.firstname] will be null. || 0 means to
